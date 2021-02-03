@@ -116,13 +116,56 @@ const myTodo: ITodo = {title:"hola", text:"mundo"};
 // * ------------------------------------------------------------------------------------------------------------------
 // * CLASES
 
-class user{
+class User{
     name: string;
-    email: string;
+    public email: string;
     age: number;
 
+    constructor(name: string,age: number,email: string){
+        this.name = name;
+        this.age  = age;
+        this.email = email;
+    }
+
+    register(){
+        console.log(`El usuario ${this.name} esta registrado`);
+    }
+
+    showMeEge() {
+        return this.age;
+    }
+     public ageInYear(){
+        return `${this.age} años`;
+    }
 }
+
+//const daniel = new User('Daniel',22,'daniel@correo.com');
+//console.log(daniel.name);
+//daniel.register();
+
+//console.log(daniel.ageInYear());
 
 // * ------------------------------------------------------------------------------------------------------------------
 
+// * HERENCIA
 
+class Merber extends User{
+    id: number;
+
+    constructor(id: number,name,email,ege){
+        // ! INDICAR QUE SON DE LA CLASE QUE HEREDA
+        super(name,email,ege);
+        this.id = id;
+    }
+
+    Registro(){
+        super.register();
+    }
+
+}
+const reno = new Merber(45,'reno','reno@correco.com',22);
+
+reno.Registro();
+
+
+// * ------------------------------------------------------------------------------------------------------------------

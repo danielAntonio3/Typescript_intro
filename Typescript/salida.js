@@ -1,3 +1,16 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // * TYPES
 var myString = "hello word";
 var myNumber = 22;
@@ -74,9 +87,43 @@ var myTodo = { title: "hola", text: "mundo" };
 //showTodo2(myTodo);
 // * ------------------------------------------------------------------------------------------------------------------
 // * CLASES
-var user = /** @class */ (function () {
-    function user() {
+var User = /** @class */ (function () {
+    function User(name, age, email) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
     }
-    return user;
+    User.prototype.register = function () {
+        console.log("El usuario " + this.name + " esta registrado");
+    };
+    User.prototype.showMeEge = function () {
+        return this.age;
+    };
+    User.prototype.ageInYear = function () {
+        return this.age + " a\u00F1os";
+    };
+    return User;
 }());
+//const daniel = new User('Daniel',22,'daniel@correo.com');
+//console.log(daniel.name);
+//daniel.register();
+//console.log(daniel.ageInYear());
+// * ------------------------------------------------------------------------------------------------------------------
+// * HERENCIA
+var Merber = /** @class */ (function (_super) {
+    __extends(Merber, _super);
+    function Merber(id, name, email, ege) {
+        var _this = 
+        // ! INDICAR QUE SON DE LA CLASE QUE HEREDA
+        _super.call(this, name, email, ege) || this;
+        _this.id = id;
+        return _this;
+    }
+    Merber.prototype.Registro = function () {
+        _super.prototype.register.call(this);
+    };
+    return Merber;
+}(User));
+var reno = new Merber(45, 'reno', 'reno@correco.com', 22);
+reno.Registro();
 // * ------------------------------------------------------------------------------------------------------------------
